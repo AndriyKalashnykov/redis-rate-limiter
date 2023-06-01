@@ -18,11 +18,6 @@ test:
 	@go generate
 	@export GOFLAGS=$(GOFLAGS); export TZ="UTC"; go test -v
 
-#build: @ Build
-build:
-	@go generate
-	@export GOFLAGS=$(GOFLAGS); export CGO_ENABLED=0; export GOOS=linux; export GOARCH=amd64; go build -a -o server main.go
-
 #release: @ Create and push a new tag
 release: api-docs build clean
 	$(eval NT=$(NEWTAG))
