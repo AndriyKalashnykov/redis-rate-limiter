@@ -19,10 +19,10 @@ test:
 	@export GOFLAGS=$(GOFLAGS); export TZ="UTC"; go test -v
 
 #release: @ Create and push a new tag
-release: api-docs build clean
+release: clean test
 	$(eval NT=$(NEWTAG))
 	@echo -n "Are you sure to create and push ${NT} tag? [y/N] " && read ans && [ $${ans:-N} = y ]
-	@echo ${NT} > ./pkg/api/version.txt
+	@echo ${NT} > ./version.txt
 	@git add -A
 	@git commit -a -s -m "Cut ${NT} release"
 	@git tag ${NT}
