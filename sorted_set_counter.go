@@ -2,11 +2,12 @@ package redis_rate_limiter
 
 import (
 	"context"
-	"github.com/go-redis/redis/v8"
-	"github.com/google/uuid"
-	"github.com/pkg/errors"
 	"strconv"
 	"time"
+
+	"github.com/google/uuid"
+	"github.com/pkg/errors"
+	"github.com/redis/go-redis/v9"
 )
 
 var (
@@ -66,11 +67,12 @@ func (s *sortedSetCounter) Run(ctx context.Context, r *Request) (*Result, error)
 	// we then remove all requests that have already expired on this set
 	removeByScore := p.ZRemRangeByScore(ctx, r.Key, "0", strconv.FormatInt(minimum.UnixMilli(), 10))
 
-	// we add the current request
-	add := p.ZAdd(ctx, r.Key, &redis.Z{
+	member := &redis.Z{
 		Score:  float64(now.UnixMilli()),
 		Member: item.String(),
-	})
+	}
+	// we add the current request
+	add := p.ZAdd(ctx, r.Key, *member)
 
 	// count how many non-expired requests we have on the sorted set
 	count := p.ZCount(ctx, r.Key, sortedSetMin, sortedSetMax)
