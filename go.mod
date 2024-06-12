@@ -6,8 +6,8 @@ require (
 	github.com/alicebob/miniredis/v2 v2.33.0
 	github.com/google/uuid v1.6.0
 	github.com/pkg/errors v0.9.1
-	github.com/redis/go-redis/v9 v9.5.2
-	github.com/stretchr/testify v1.8.4
+	github.com/redis/go-redis/v9 v9.5.3
+	github.com/stretchr/testify v1.9.0
 )
 
 require (
