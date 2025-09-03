@@ -11,7 +11,7 @@ help:
 
 #clean: @ Cleanup
 clean:
-	@sudo rm -rf vendor/ dist/
+	@rm -rf vendor/ dist/
 
 #test: @ Run tests
 test:
