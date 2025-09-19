@@ -5,6 +5,10 @@ on:
   pull_request:
   merge_group:
 
+permissions:
+  contents: write
+  packages: write
+
 jobs:
   ci:
     timeout-minutes: 10
@@ -39,10 +43,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-buildx-
 
-    - name: Set up Go
-      uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5.5.0
+    - name: Install Go
+      uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5
       with:
-        go-version: ${{ matrix.go-version }}
+        go-version-file: 'go.mod'
+        cache: true
 
     - name: Test
       run: make test
