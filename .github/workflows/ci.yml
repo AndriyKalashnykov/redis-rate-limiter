@@ -18,9 +18,6 @@ jobs:
     permissions:
       packages: write
       contents: read
-    strategy:
-      matrix:
-        go-version: [ '1.23' ]
 
     steps:
 
