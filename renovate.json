@@ -2,7 +2,6 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:best-practices",
-    ":approveMajorUpdates",
     ":label(dependencies)",
     ":semanticCommitType(chore)",
     "docker:pinDigests",
@@ -23,21 +22,17 @@
   "commitMessageAction": "update",
   "commitBody": "Signed-off-by: Renovate Bot <bot@renovateapp.com>",
   "platformAutomerge": true,
-  "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
-  "groupName": "all",
   "labels": [
     "dependencies"
   ],
   "packageRules": [
     {
-      "description": "Automerge major updates",
+      "description": "Require manual approval for major updates",
       "matchUpdateTypes": [
         "major"
       ],
-      "automerge": true,
-      "automergeType": "pr",
-      "platformAutomerge": true
+      "automerge": false
     },
     {
       "description": "Automerge non-major updates",
@@ -52,7 +47,7 @@
         "ref",
         "none",
         "security",
-        "grop",
+        "group",
         "unpin"
       ],
       "automerge": true,
