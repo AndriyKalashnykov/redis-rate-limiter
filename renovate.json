@@ -36,14 +36,7 @@
         "patch",
         "digest",
         "pin",
-        "pinDigest",
-        "internal",
-        "devDependencies",
-        "ref",
-        "none",
-        "security",
-        "group",
-        "unpin"
+        "pinDigest"
       ],
       "automerge": true,
       "automergeType": "pr",

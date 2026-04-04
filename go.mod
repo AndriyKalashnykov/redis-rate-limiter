@@ -1,6 +1,6 @@
 module github.com/AndriyKalashnykov/redis-rate-limiter
 
-go 1.25.5
+go 1.26
 
 require (
 	github.com/alicebob/miniredis/v2 v2.37.0
